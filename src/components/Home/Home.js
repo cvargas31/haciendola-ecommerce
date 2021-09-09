@@ -18,20 +18,6 @@ const Home = () => {
   const { products, loading, error } = getProducts;
   const { collections, loadingCollections, errorCollections } = getCollections;
 
-  const slideShow = () => {
-    return (
-      <div className="image-container">
-        {products.map((product) => (
-          <div className="image-body">
-            <img src={product.imageSrc} alt={product.title} />
-            <span className="description">
-              {product.title.substring(0, 21)}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  };
 
   useEffect(() => {
     dispatch(listProducts());
