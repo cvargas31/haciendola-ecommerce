@@ -13,7 +13,7 @@ export const addToCart = (handle, qty) => async (dispatch, getState) => {
       handle: data.handle,
       vendor: data.vendor,
       type: data.type,
-      inStock: data.variantInventoryQty,
+      inStock:  data.variantInventoryQty,
       price: data.variantPrice,
       qty,
     },

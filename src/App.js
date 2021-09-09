@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home'
-import SingleProduct from './components/SingleProducts/SingleProduct'
+import SingleProduct from './components/SingleProduct/SingleProduct'
 import Collections from './components/Collections/Collections'
 import CollectionProducts from './components/Collections/CollectionProducts'
 import Cart from './components/Cart/Cart'

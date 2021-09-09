@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProducts as listProducts } from "../../redux/actions/productActions";
 import { getCollections as listCollections } from "../../redux/actions/collectionActions";
 import { Link } from "react-router-dom";
+import "./Home.css";
+import Banner from "../layout/Banner";
+import ProductCard from "../Products/ProductCard";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,14 +18,20 @@ const Home = () => {
   const { products, loading, error } = getProducts;
   const { collections, loadingCollections, errorCollections } = getCollections;
 
-  const productsImg = () => {
-    const images = []
-    products.map((product) => images.push(product.imageSrc))
-    return images
-  }
-
-  console.log(productsImg())
-
+  const slideShow = () => {
+    return (
+      <div className="image-container">
+        {products.map((product) => (
+          <div className="image-body">
+            <img src={product.imageSrc} alt={product.title} />
+            <span className="description">
+              {product.title.substring(0, 21)}
+            </span>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   useEffect(() => {
     dispatch(listProducts());
@@ -32,47 +41,46 @@ const Home = () => {
   console.log(products);
   return (
     <div>
+      <Banner title="Homepage" />
       <div>
-        <h1 style={{ textAlign: "center" }}>Best Sellers</h1>
         {loading ? (
           <h2>Loading...</h2>
         ) : error ? (
           <h2>{error}</h2>
         ) : (
-          <ul>
+          <div className="card-container">
+            <h1>Nuestros Best Sellers</h1>
             {products.map((product) => (
-              <li key={product.handle}>
-                {product.title}
-                <Link to={`/products/${product.handle}`}>Ver Producto</Link>
-              </li>
+              <ProductCard
+                title={product.title}
+                image={product.imageSrc}
+                price={product.variantPrice}
+                handle={product.handle}
+              />
             ))}
-          </ul>
+          </div>
         )}
       </div>
       <div>
-        <h1 style={{ textAlign: "center" }}>Collections</h1>
+        <h1 style={{ textAlign: "center" }}>Colleciones</h1>
         {loadingCollections ? (
           <h2>Loading...</h2>
         ) : errorCollections ? (
           <h2>{errorCollections}</h2>
         ) : (
-          <ul>
+          <div className="btn-container">
             {collections.map((collection) => (
-              <li key={collection.handle}>
-                {collection.handle}
+              <button key={collection.handle} className="btn btn-gradient">
                 <Link
                   to={`/products/getByCollectionHandle/${collection.handle}`}
                 >
-                  Ver Collecion
+                  {collection.handle}
                 </Link>
-              </li>
+              </button>
             ))}
-          </ul>
+          </div>
         )}
       </div>
-      {/* <div>
-        <h1 style={{ textAlign: "center" }}>Best Sellers</h1>
-      </div> */}
     </div>
   );
 };

@@ -1,0 +1,65 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  width: 400px;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card-description{
+  padding: 20px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  transition: all 0.3s ease;
+
+}
+
+.card button:hover {
+  background-color: gray;
+}
+
+
+.btn-gradient {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+
+.btn-gradient a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 340px;
+  justify-content: space-between;
+  margin: 0 auto;
+  gap: 20px;
+}
