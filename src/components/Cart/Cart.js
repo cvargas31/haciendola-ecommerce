@@ -1,23 +1,29 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
-import "./Cart.css"
-
+import "./Cart.css";
+import { removeFromCart, addToCart } from "../../redux/actions/cartActions";
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-
   const { cartItems } = cart;
 
-console.log(cartItems)
-  const cartTotal = () => {
-    return cartItems.reduce((accumulator, item) => Number(accumulator) + Number(item.price), 0)
+  const removeItemCart = (product) => {
+    dispatch(removeFromCart(product))
   }
-  console.log(cartTotal())
-  
 
+  const adjustItemQuantity = (product, qty) => {
+    dispatch(addToCart(product, qty))
+  }
+
+  const cartTotal = () => {
+    return cartItems.reduce(
+      (accumulator, item) => accumulator + item.price * item.qty,
+      0
+    );
+  };
+  console.log(cartItems)
   return (
     <div>
       {cartItems.length === 0 ? (
@@ -29,10 +35,13 @@ console.log(cartItems)
           <div className="cart-items">
             {cartItems.map((item) => (
               <CartItem
-                title={item.title}
                 price={item.price}
                 quantity={item.qty}
                 imageUrl={item.imageUrl}
+                product={item.product}
+                inStock={item.inStock}
+                removeItemCart={removeItemCart}
+                adjustItemQuantity={adjustItemQuantity}
               />
             ))}
           </div>

@@ -7,9 +7,10 @@ const Navbar = () => {
 
   const cart = useSelector((state) => state.cart)
   const {cartItems} = cart
-  const cartCount = () => {
-    return cartItems.reduce((qty, item) => qty + Number(item.qty), 0)
-  }
+  // console.log(cartItems)
+  // const cartCount = () => {
+  //   return cartItems.reduce((qty, item) => qty + Number(item.qty), 0)
+  // }
   return (
     <nav className="navbar">
       <div className="logo">
@@ -27,7 +28,7 @@ const Navbar = () => {
           <Link to="/cart">
             <AiOutlineShoppingCart />
             Cart
-            <span className="cart__badge">({cartCount()})</span>
+            <span className="cart__badge">({cartItems.length})</span>
           </Link>
         </li>
         <li>

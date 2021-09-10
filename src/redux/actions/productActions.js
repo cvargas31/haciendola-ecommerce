@@ -22,7 +22,6 @@ export const getProducts = () => async (dispatch) => {
 };
 
 
-
 export const getProductDetails = (handle) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCT_DETAILS });
