@@ -13,6 +13,7 @@ import {
   getCollectionsReducer,
   getCollectionsProductsReducer,
 } from "./reducers/collectionReducers";
+import { getOrdersReducer, singleOrderReducer } from "./reducers/orderReducer";
 
 // All Reducers in a object
 const reducer = combineReducers({
@@ -21,6 +22,8 @@ const reducer = combineReducers({
   singleProduct: singleProductDetailsReducer,
   collections: getCollectionsReducer,
   collectionProducts: getCollectionsProductsReducer,
+  orders: getOrdersReducer,
+  singleOrder: singleOrderReducer
 });
 
 // Middleware

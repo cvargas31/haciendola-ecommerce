@@ -7,6 +7,9 @@ import Collections from './components/Collections/Collections'
 import CollectionProducts from './components/Collections/CollectionProducts'
 import Cart from './components/Cart/Cart'
 import Login from './components/User/Login';
+import PrivateRoutes from './routes/PrivateRoutes';
+import Dashboard from './components/User/Dashboard';
+import OrderDetails from './components/User/Orders/OrderDetails';
 
 function App() {
   return (
@@ -22,7 +25,10 @@ function App() {
          <Route  path="/collections" exact component={Collections}/>
          <Route  path="/cart" exact component={Cart}/>
          <Route  path="/products/getByCollectionHandle/:handle" exact component={CollectionProducts}/>
-         <Route path="/login" exact component={Login}/>
+         <Route path="/users/login" exact component={Login}/>
+         <PrivateRoutes path="/users/getOrders" exact component={Dashboard} />
+         <PrivateRoutes path="/users/getOrderDetail/:orderId" exact component={OrderDetails} />
+         <Route>Not Found</Route>
        </Switch>
      </main>
     </div>

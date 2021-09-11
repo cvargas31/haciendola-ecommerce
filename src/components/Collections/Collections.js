@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-// import { getProductDetails } from "../../redux/actions/productActions";
 import { getCollectionsProducts } from "../../redux/actions/collectionActions";
-import { addToCart } from "../../redux/actions/cartActions";
 
 const Collections = () => {
 
