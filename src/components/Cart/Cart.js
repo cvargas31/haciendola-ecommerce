@@ -31,7 +31,7 @@ const Cart = () => {
           Cart is empty..<Link to="/">Go Back</Link>
         </h2>
       ) : (
-        <>
+        <div className="cart-container">
           <div className="cart-items">
             {cartItems.map((item) => (
               <CartItem
@@ -50,7 +50,7 @@ const Cart = () => {
             <p>$ {Intl.NumberFormat("es-MX").format(cartTotal())}</p>
             <button>Checkout</button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

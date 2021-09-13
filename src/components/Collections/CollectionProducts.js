@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-// import { getProductDetails } from "../../redux/actions/productActions";
 import { getCollectionsProducts } from "../../redux/actions/collectionActions";
-import { Link } from "react-router-dom";
 import ProductCard from "../Products/ProductCard";
 import Banner from "../layout/Banner";
-
+import './CollectionProduct.css'
 
 const CollectionsProducts = () => {
   const dispatch = useDispatch();
@@ -28,8 +26,8 @@ const CollectionsProducts = () => {
       ) : error ? (
         <h2>{error}</h2>
       ) : (
-        <div className="card-container">
-            <h1></h1>
+        <div className="collections-container">
+        <div className="cards-container">
             {products.map((product) => (
               <ProductCard
                 title={product.title}
@@ -39,6 +37,7 @@ const CollectionsProducts = () => {
               />
             ))}
           </div>
+        </div>
       )}
     </div>
   );

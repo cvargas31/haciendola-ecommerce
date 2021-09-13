@@ -29,12 +29,18 @@ export const getOrders = (token) => async (dispatch) => {
   }
 };
 
-export const getOrderDetail = (orderId) => async (dispatch) => {
+export const getOrderDetail = (orderId,token) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_ORDER_DETAILS });
     const { data } = await axios.get(
-      `https://staging.haciendola.dev/backend/test-front/api/users/getOrderDetail/${orderId}`
-    );
+      `https://staging.haciendola.dev/backend/test-front/api/users/getOrderDetail/${orderId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+      );
 
     dispatch({
       type: actionTypes.GET_ORDER_DETAILS_SUCCESS,

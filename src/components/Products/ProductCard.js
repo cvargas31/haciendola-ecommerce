@@ -10,7 +10,7 @@ const ProductCard = ({ image, title, price, handle }) => {
       </div>
       <div className="card-body">
         <div className="card-info">
-          <h1 className="product-title">{title.substring(0, 21)}</h1>
+          <h1 className="product-title">{title}</h1>
           <p className="price">$ {Intl.NumberFormat("es-MX").format(price)}</p>
         </div>
         <div className="card-button">

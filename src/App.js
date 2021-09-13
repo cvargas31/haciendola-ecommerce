@@ -10,14 +10,17 @@ import Login from './components/User/Login';
 import PrivateRoutes from './routes/PrivateRoutes';
 import Dashboard from './components/User/Dashboard';
 import OrderDetails from './components/User/Orders/OrderDetails';
+import { useState } from 'react';
 
 function App() {
+  
+  const [expanded, setExpanded] = useState(false)
   return (
     <Router>
 
     <div className="app">
      {/* Navbar */}
-     <Navbar />
+     <Navbar exact={expanded} />
      <main>
      <Switch>
          <Route path="/" exact component={Home}/>

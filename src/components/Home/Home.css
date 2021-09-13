@@ -5,20 +5,26 @@
   align-items: center;
 }
 
+.homepage-container>h1 {
+  text-align: center;
+  margin: 50px;
+}
 .cards-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-@media screen and (min-width: 996px) {
+@media screen and (min-width: 768px) {
   .cards-container {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    max-width: 1200px;
-    flex-wrap: wrap;
-    margin-top: 50px;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+    column-gap: 30px;
+    row-gap: 50px;
   }
 }

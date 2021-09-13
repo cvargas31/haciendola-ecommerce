@@ -37,7 +37,7 @@ const Login = () => {
 
   const redirectUser = () => {
     if (redirectToReferrer) {
-      return <Redirect to="/" />;
+      return <Redirect to="/users/getOrders" />;
     }
   };
   return (
