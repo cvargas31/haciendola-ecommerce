@@ -3,16 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { getProductDetails } from "../../redux/actions/productActions";
 import { addToCart } from "../../redux/actions/cartActions";
-
+import "./SingleProduct.css";
 const SingleProduct = ({ history }) => {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const { handle } = useParams();
   const productDetails = useSelector((state) => state.singleProduct);
-  const cartDetails = useSelector((state) => state.cart.cartItems)
 
   const { loading, error, product } = productDetails;
-  console.log(product)
+  console.log(product);
   useEffect(() => {
     if (product && handle !== product.handle) {
       dispatch(getProductDetails(handle));
@@ -23,7 +22,6 @@ const SingleProduct = ({ history }) => {
     dispatch(addToCart(product.handle, qty));
     history.push("/cart");
   };
-
 
   const productQuantity = (quantity) => {
     return (
@@ -38,26 +36,26 @@ const SingleProduct = ({ history }) => {
   };
 
   const renderProduct = () => {
-    const {imageSrc, title, variantPrice, Vendor, variantInventoryQty} = product
+    const { imageSrc, title, variantPrice, Vendor, variantInventoryQty } =
+      product;
     return (
       <div className="product-container">
-          <div className="product-container-left">
-            <img src={imageSrc} alt={title} />
-          </div>
-          <div className="product-container-right">
-            <h3>{title}</h3>
-            <h2>$ {Intl.NumberFormat("es-MX").format(variantPrice)}</h2>
-            <p className="product-vendor">Vendor: {Vendor}</p>
-            <p>
-              {variantInventoryQty > 0 ? "Disponible" : "Out of Stock"}
-            </p>
-            <span>Quantity:</span>
-            {variantInventoryQty> 0 ? (
-              productQuantity(variantInventoryQty)
+        <div className="product-container-left">
+          <img src={imageSrc} alt={title} />
+        </div>
+        <div className="product-container-right">
+          <h3>{title}</h3>
+          <h2>$ {Intl.NumberFormat("es-MX").format(variantPrice)}</h2>
+          <p className="product-vendor">Vendor: {Vendor}</p>
+          <p>{variantInventoryQty > 0 ? "Disponible" : "Out of Stock"}</p>
+          {variantInventoryQty > 0 ? (
+            productQuantity(variantInventoryQty)
             ) : (
-              <h2>Not Available..</h2>
-            )}
-          </div>
+              <div>
+                <span>Quantity:</span>
+                <h2>Not Available..</h2>
+              </div>
+          )}
           <div className="product-button">
             {variantInventoryQty > 0 ? (
               <button onClick={addToCartHandler}>Add To Cart</button>
@@ -66,8 +64,9 @@ const SingleProduct = ({ history }) => {
             )}
           </div>
         </div>
-    )
-  }
+      </div>
+    );
+  };
 
   return (
     <div>

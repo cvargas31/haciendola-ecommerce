@@ -9,17 +9,15 @@ const Dashboard = () => {
   const orderDetails = useSelector((state) => state.orders);
   const { loading, error, orders } = orderDetails;
   const jwtToken = JSON.parse(localStorage.getItem("jwt")).token;
-  console.log(jwtToken);
 
   useEffect(() => {
     dispatch(getOrders(jwtToken));
   }, [dispatch, jwtToken]);
-  console.log(JSON.stringify(orders));
 
   const ordersProducts = orders.map((order) => {
-    return order.products.map((product) => product)
-  })
-  console.log(ordersProducts)
+    return order.products.map((product) => product);
+  });
+
   return (
     <>
       <Banner title="User Orders" />
@@ -29,24 +27,28 @@ const Dashboard = () => {
         ) : error ? (
           <h2>{error}</h2>
         ) : (
-          <div className="card-container">
-            <h1>Ultimas Ordenes</h1>
-            <ul>
-              {orders.map((order) => (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    margin: "20px",
-                  }}
-                >
-                  <li>{order.orderDate}</li>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <Link to={`/users/getOrderDetail/${order.orderId}`}><button>Ver Orden</button></Link>
+          <div>
+              <h1>Ultimas Ordenes</h1>
+            <div className="card-container">
+              <ul>
+                {orders.map((order) => (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      margin: "20px",
+                    }}
+                  >
+                    <li>{order.orderDate}</li>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <Link to={`/users/getOrderDetail/${order.orderId}`}>
+                        <button>Ver Orden</button>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </ul>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </div>

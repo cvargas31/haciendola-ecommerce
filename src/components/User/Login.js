@@ -1,7 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
+import { signIn, authenticate } from "../../auth/index";
 import { Redirect } from "react-router";
-import {signIn, authenticate, isAuthenticated} from '../../auth/index'
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -41,32 +40,28 @@ const Login = () => {
       return <Redirect to="/" />;
     }
   };
-
   return (
     <>
-      {!isAuthenticated ? (
-        (<form>
-          <label>Usermame</label>
-          <input
-            type="text"
-            placeholder="username"
-            onChange={handleChange("user")}
-            value={user}
-          />
-          <br />
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="enter your password"
-            onChange={handleChange("password")}
-            value={password}
-          />
-          <br />
-          <button onClick={clickSubmit}>Sign In</button>
-        </form>)
-      ) : (
-        <Redirect to="/" />
-      )}
+      <form>
+        <label>Usermame</label>
+        <input
+          type="text"
+          placeholder="username"
+          onChange={handleChange("user")}
+          value={user}
+        />
+        <br />
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="enter your password"
+          onChange={handleChange("password")}
+          value={password}
+        />
+        <br />
+        <button onClick={clickSubmit}>Sign In</button>
+      </form>
+      {redirectUser()}
     </>
   );
 };

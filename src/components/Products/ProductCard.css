@@ -1,9 +1,24 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: auto;
-  width: 400px;
+  width: 300px;
   text-align: center;
   font-family: arial;
+}
+
+.card-img {
+}
+
+.card-button {
+  border-left: 1px solid rgba(0, 0, 0, 0.479);
+}
+
+.card-button a {
+  color: gray;
+}
+
+.product-title {
+  font-size: 18px;
 }
 
 .price {
@@ -11,7 +26,7 @@
   font-size: 22px;
 }
 
-.card-description{
+.card-description {
   padding: 20px;
 }
 
@@ -26,40 +41,43 @@
   width: 100%;
   font-size: 18px;
   transition: all 0.3s ease;
-
 }
 
 .card button:hover {
   background-color: gray;
 }
 
-
 .btn-gradient {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
-  transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  height: 200px;
+  width: 300px;
+  background: rgb(194,194,194);
+  background: linear-gradient(90deg, rgba(194,194,194,1) 0%, rgba(119,119,119,1) 50%, rgba(205,205,205,1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .2s ease-in-out; 
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
-  color: white;
+  transform: scale(1.1); 
 }
 
 .btn-gradient a {
-  color: white;
-  text-decoration: none;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 3.2px;
 }
 
-.btn-container{
+.btn-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 340px;
+  max-width: 800px;
   justify-content: space-between;
-  margin: 0 auto;
+  margin: 50px auto;
+  grid-gap: 20px;
   gap: 20px;
 }

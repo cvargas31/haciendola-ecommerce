@@ -18,7 +18,6 @@ const Home = () => {
   const { products, loading, error } = getProducts;
   const { collections, loadingCollections, errorCollections } = getCollections;
 
-
   useEffect(() => {
     dispatch(listProducts());
     dispatch(listCollections());
@@ -34,16 +33,18 @@ const Home = () => {
         ) : error ? (
           <h2>{error}</h2>
         ) : (
-          <div className="card-container">
-            <h1>Nuestros Best Sellers</h1>
-            {products.map((product) => (
-              <ProductCard
-                title={product.title}
-                image={product.imageSrc}
-                price={product.variantPrice}
-                handle={product.handle}
-              />
-            ))}
+          <div className="homepage-container">
+            <h1 style={{ textAlign: "center" }}>Nuestros Best Sellers</h1>
+            <div className="cards-container">
+              {products.map((product) => (
+                <ProductCard
+                  title={product.title}
+                  image={product.imageSrc}
+                  price={product.variantPrice}
+                  handle={product.handle}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>
@@ -56,13 +57,13 @@ const Home = () => {
         ) : (
           <div className="btn-container">
             {collections.map((collection) => (
-              <button key={collection.handle} className="btn btn-gradient">
+              <div key={collection.handle} className="btn btn-gradient">
                 <Link
                   to={`/products/getByCollectionHandle/${collection.handle}`}
                 >
                   {collection.handle}
                 </Link>
-              </button>
+              </div>
             ))}
           </div>
         )}

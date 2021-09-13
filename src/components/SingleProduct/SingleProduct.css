@@ -1,0 +1,20 @@
+.product-container {
+      display: flex;
+      width: 800px;
+      justify-content: center;
+      align-items: center;
+      margin: 140px auto;
+      background-color: white;
+}
+
+.product-container-right {
+  padding: 0px 100px;
+}
+
+.product-container-left {
+  width: 400px;
+}
+
+.product-container-left img {
+  width: 400px;
+}
