@@ -23,6 +23,7 @@ const Home = () => {
     dispatch(listCollections());
   }, [dispatch]);
 
+
   return (
     <div>
       <Banner title="Homepage" />
