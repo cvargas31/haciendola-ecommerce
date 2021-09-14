@@ -23,7 +23,6 @@ const Home = () => {
     dispatch(listCollections());
   }, [dispatch]);
 
-  console.log(products);
   return (
     <div>
       <Banner title="Homepage" />
@@ -42,13 +41,14 @@ const Home = () => {
                   image={product.imageSrc}
                   price={product.variantPrice}
                   handle={product.handle}
+                  key={product.variantSku}
                 />
               ))}
             </div>
           </div>
         )}
       </div>
-      <div>
+      <>
         <h1 style={{ textAlign: "center" }}>Colleciones</h1>
         {loadingCollections ? (
           <h2>Loading...</h2>
@@ -67,7 +67,7 @@ const Home = () => {
             ))}
           </div>
         )}
-      </div>
+      </>
     </div>
   );
 };

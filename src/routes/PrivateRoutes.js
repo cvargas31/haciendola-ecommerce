@@ -1,5 +1,5 @@
 
-import React, { Component } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { isAuthenticated } from "../auth/index";
 

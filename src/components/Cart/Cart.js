@@ -23,7 +23,6 @@ const Cart = () => {
       0
     );
   };
-  console.log(cartItems)
   return (
     <div>
       {cartItems.length === 0 ? (
@@ -33,7 +32,7 @@ const Cart = () => {
       ) : (
         <div className="cart-container">
           <div className="cart-items">
-            {cartItems.map((item) => (
+            {cartItems.map((item, index) => (
               <CartItem
                 price={item.price}
                 quantity={item.qty}
@@ -42,6 +41,7 @@ const Cart = () => {
                 inStock={item.inStock}
                 removeItemCart={removeItemCart}
                 adjustItemQuantity={adjustItemQuantity}
+                key={index}
               />
             ))}
           </div>

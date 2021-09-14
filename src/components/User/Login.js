@@ -11,7 +11,7 @@ const Login = () => {
     loading: "",
   });
 
-  const { user, password, error, redirectToReferrer, loading } = values;
+  const { user, password, error, redirectToReferrer } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -34,6 +34,7 @@ const Login = () => {
       }
     });
   };
+  
 
   const redirectUser = () => {
     if (redirectToReferrer) {

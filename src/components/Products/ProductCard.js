@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "./ProductCard.css";
-import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 const ProductCard = ({ image, title, price, handle }) => {
   return (

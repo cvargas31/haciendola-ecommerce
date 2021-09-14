@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { getCollectionsProducts } from "../../redux/actions/collectionActions";
@@ -16,7 +16,7 @@ const Collections = () => {
     }
   }, [dispatch, product, handle])
 
-  console.log(product)
+  console.log(product, loading, error)
   return (
     <div>
       Collections

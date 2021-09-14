@@ -13,7 +13,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getOrders(jwtToken));
   }, [dispatch, jwtToken]);
-  console.log(orderDetails.orders);
+
   return (
     <>
       <Banner title="Ordenes de Usuario" />
@@ -27,9 +27,9 @@ const Dashboard = () => {
             <h1 style={{textAlign: "center"}}>Ultimas Ordenes</h1>
             <div className="order-container">
               {orders.map((order) => (
-                <>
-                  <div className="order-product">
-                    <div className="order-product-left">
+                <div key={order.orderId}>
+                  <div className="order-product" >
+                    <div className="order-product-left" >
                       <span>Id de la orden</span>
                       <h3>{order.orderId}</h3>
                     </div>
@@ -56,7 +56,7 @@ const Dashboard = () => {
                       </Link>
                     </div>
                   </div>
-                </>
+                </div>
               ))}
             </div>
           </div>

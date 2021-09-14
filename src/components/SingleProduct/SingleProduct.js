@@ -11,7 +11,7 @@ const SingleProduct = ({ history }) => {
   const productDetails = useSelector((state) => state.singleProduct);
 
   const { loading, error, product } = productDetails;
-  console.log(product);
+  
   useEffect(() => {
     if (product && handle !== product.handle) {
       dispatch(getProductDetails(handle));

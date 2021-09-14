@@ -12,16 +12,15 @@ const OrderDetails = () => {
 
   useEffect(() => {
     dispatch(getOrderDetail(orderId, jwtToken));
-  }, [dispatch, orderId]);
+  }, [dispatch, orderId,jwtToken]);
 
-  console.log(orderProductDetails);
   return (
     <div>
       {orderProductDetails ? (
         <div>
           <h1>Productos</h1>
-          {orderProductDetails.products.map((product) => (
-            <>
+          {orderProductDetails.products.map((product, index) => (
+            <div key={index}>
               <div className="order-product">
                 <div className="order-product-left">
                   <span>Producto</span>
@@ -34,13 +33,13 @@ const OrderDetails = () => {
                       $ {Intl.NumberFormat("es-MX").format(product.price)}
                     </strong>
                   </p>
-                </div>
+                </div >
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <span> Cantidades</span>
                   <h4>{product.quantity}</h4>
                 </div>
               </div>
-            </>
+            </div>
           ))}
           <div className="order-summary-container">
             <h1>Resumen de la Orden</h1>
