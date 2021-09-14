@@ -7,7 +7,6 @@ const Banner = ({title}) => {
         <h1>
           <strong>{title}</strong>
         </h1>
-
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const SingleProduct = ({ history }) => {
   const productDetails = useSelector((state) => state.singleProduct);
 
   const { loading, error, product } = productDetails;
-  
+
   useEffect(() => {
     if (product && handle !== product.handle) {
       dispatch(getProductDetails(handle));
@@ -48,19 +48,12 @@ const SingleProduct = ({ history }) => {
           <h2>$ {Intl.NumberFormat("es-MX").format(variantPrice)}</h2>
           <p className="product-vendor">Vendor: {Vendor}</p>
           <p>{variantInventoryQty > 0 ? "Disponible" : "Out of Stock"}</p>
-          {variantInventoryQty > 0 ? (
-            productQuantity(variantInventoryQty)
-            ) : (
-              <div>
-                <span>Quantity:</span>
-                <h2>Not Available..</h2>
-              </div>
-          )}
+          {variantInventoryQty > 0 && productQuantity(variantInventoryQty)}
           <div className="product-button">
             {variantInventoryQty > 0 ? (
-              <button onClick={addToCartHandler}>Add To Cart</button>
+              <button  onClick={addToCartHandler}>Add To Cart</button>
             ) : (
-              <button disabled>Out Of Stock</button>
+              <button disabled>Not available</button>
             )}
           </div>
         </div>

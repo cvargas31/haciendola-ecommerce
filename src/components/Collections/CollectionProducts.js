@@ -16,7 +16,6 @@ const CollectionsProducts = () => {
     dispatch(getCollectionsProducts(handle));
   }, [dispatch, handle]);
 
-  console.log(products, loading);
   return (
     <div>
       <Banner title={handle}/>

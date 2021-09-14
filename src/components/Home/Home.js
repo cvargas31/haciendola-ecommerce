@@ -23,9 +23,9 @@ const Home = () => {
     dispatch(listCollections());
   }, [dispatch]);
 
-
   return (
-    <div>
+    <>
+    {/* Loading Best Sellers */}
       <Banner title="Homepage" />
       <div>
         {loading ? (
@@ -50,26 +50,27 @@ const Home = () => {
         )}
       </div>
       <>
-        <h1 style={{ textAlign: "center" }}>Colleciones</h1>
+      {/* Loading Collections Buttons */}
+        <h1 style={{ textAlign: "center", margin: "50px 0" }}>Colleciones</h1>
         {loadingCollections ? (
           <h2>Loading...</h2>
         ) : errorCollections ? (
           <h2>{errorCollections}</h2>
         ) : (
-          <div className="btn-container">
+          <div className="collection-buttons">
             {collections.map((collection) => (
-              <div key={collection.handle} className="btn btn-gradient">
+              <button key={collection.handle} className="collection-btn">
                 <Link
                   to={`/products/getByCollectionHandle/${collection.handle}`}
                 >
                   {collection.handle}
                 </Link>
-              </div>
+              </button>
             ))}
           </div>
         )}
       </>
-    </div>
+    </>
   );
 };
 

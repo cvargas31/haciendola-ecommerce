@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { signIn, authenticate } from "../../auth/index";
-import { Redirect } from "react-router";
+import { useEffect, useState } from "react";
+import { signIn, authenticate, isAuthenticated } from "../../auth/index";
 
-const Login = () => {
+const Login = ({history}) => {
   const [values, setValues] = useState({
     user: "",
     password: "",
@@ -34,13 +33,20 @@ const Login = () => {
       }
     });
   };
+
+  useEffect(() => {
+    if(isAuthenticated() && isAuthenticated() !== "undefined"){
+      history.push('/')
+    }
+  }, [history])
   
 
   const redirectUser = () => {
     if (redirectToReferrer) {
-      return <Redirect to="/users/getOrders" />;
+      return history.push('/users/getOrders');
     }
   };
+
   return (
     <>
       <form>

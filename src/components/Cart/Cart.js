@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import "./Cart.css";
-import { removeFromCart, addToCart } from "../../redux/actions/cartActions";
+import { removeFromCart } from "../../redux/actions/cartActions";
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -11,10 +11,6 @@ const Cart = () => {
 
   const removeItemCart = (product) => {
     dispatch(removeFromCart(product))
-  }
-
-  const adjustItemQuantity = (product, qty) => {
-    dispatch(addToCart(product, qty))
   }
 
   const cartTotal = () => {
@@ -26,8 +22,8 @@ const Cart = () => {
   return (
     <div>
       {cartItems.length === 0 ? (
-        <h2>
-          Cart is empty..<Link to="/">Go Back</Link>
+        <h2 style={{textAlign:"center", margin: "100px", color: "gray"}}>
+          Cart is empty.. <br/><Link to="/" style={{color: "black"}}>Go Back</Link>
         </h2>
       ) : (
         <div className="cart-container">
@@ -40,7 +36,6 @@ const Cart = () => {
                 product={item.product}
                 inStock={item.inStock}
                 removeItemCart={removeItemCart}
-                adjustItemQuantity={adjustItemQuantity}
                 key={index}
               />
             ))}
@@ -48,7 +43,7 @@ const Cart = () => {
           <div className="cart-total">
             <h6>Subtotal</h6>
             <p>$ {Intl.NumberFormat("es-MX").format(cartTotal())}</p>
-            <button>Checkout</button>
+            <button className="product-button">Checkout</button>
           </div>
         </div>
       )}

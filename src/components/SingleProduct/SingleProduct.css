@@ -22,21 +22,35 @@
   text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+.product-button button {
+  margin-top: 20px;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+}
 
+.product-button button:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (min-width: 768px) {
   .product-container {
     margin: 140px auto;
     flex-direction: row;
   }
-  
+
   .product-container-right {
     padding: 0px 100px;
   }
-  
+
   .product-container-left {
     width: 400px;
   }
-  
+
   .product-container-left img {
     height: 500px;
   }
