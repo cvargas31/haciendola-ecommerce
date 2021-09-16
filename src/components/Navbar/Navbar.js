@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
 import { isAuthenticated } from "../../auth";
+
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const cart = useSelector((state) => state.cart);
@@ -16,13 +17,13 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar__logo">
+      <div className="navbar-logo">
         <Link to="/">
           <h2>Ecommerce</h2>
         </Link>
       </div>
 
-      <ul className={navbarOpen ? "navbar__links" : "navbar__links close"}>
+      <ul className={navbarOpen ? "navbar-links" : "navbar-links close"}>
         <li>
           <NavLink exact to="/" activeClassName="active">
             Home
@@ -56,7 +57,7 @@ const Navbar = () => {
         )}
       </ul>
 
-      <div className="burger__menu" onClick={handleNavbarClick}>
+      <div className="burger-menu" onClick={handleNavbarClick}>
         {navbarOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}
       </div>
     </nav>

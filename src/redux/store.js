@@ -23,7 +23,7 @@ const reducer = combineReducers({
   collections: getCollectionsReducer,
   collectionProducts: getCollectionsProductsReducer,
   orders: getOrdersReducer,
-  singleOrder: singleOrderReducer
+  singleOrder: singleOrderReducer,
 });
 
 // Middleware

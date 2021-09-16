@@ -12,16 +12,9 @@
 .cart-container {
   max-width: 800px;
   margin: 0 auto;
-  /* height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; */
+
 }
 
-/* .cart-items {
-  max-width: 800px;
-  margin: 0 auto;
-} */
 
 @media screen and (min-width: 800px) {
   .cart-container {

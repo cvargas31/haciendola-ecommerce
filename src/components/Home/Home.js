@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts as listProducts } from "../../redux/actions/productActions";
-import { getCollections as listCollections } from "../../redux/actions/collectionActions";
-import { Link } from "react-router-dom";
 import "./Home.css";
 import Banner from "../layout/Banner";
 import ProductCard from "../Products/ProductCard";
@@ -12,20 +10,17 @@ const Home = () => {
 
   // Data from store
   const getProducts = useSelector((state) => state.getProducts);
-  const getCollections = useSelector((state) => state.collections);
 
   // Destructuring data from store
   const { products, loading, error } = getProducts;
-  const { collections, loadingCollections, errorCollections } = getCollections;
 
   useEffect(() => {
     dispatch(listProducts());
-    dispatch(listCollections());
   }, [dispatch]);
 
   return (
     <>
-    {/* Loading Best Sellers */}
+      {/* Loading Best Sellers */}
       <Banner title="Homepage" />
       <div>
         {loading ? (
@@ -49,27 +44,6 @@ const Home = () => {
           </div>
         )}
       </div>
-      <>
-      {/* Loading Collections Buttons */}
-        <h1 style={{ textAlign: "center", margin: "50px 0" }}>Colleciones</h1>
-        {loadingCollections ? (
-          <h2>Loading...</h2>
-        ) : errorCollections ? (
-          <h2>{errorCollections}</h2>
-        ) : (
-          <div className="collection-buttons">
-            {collections.map((collection) => (
-              <button key={collection.handle} className="collection-btn">
-                <Link
-                  to={`/products/getByCollectionHandle/${collection.handle}`}
-                >
-                  {collection.handle}
-                </Link>
-              </button>
-            ))}
-          </div>
-        )}
-      </>
     </>
   );
 };

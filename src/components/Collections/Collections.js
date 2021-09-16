@@ -1,26 +1,42 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router";
-import { getCollectionsProducts } from "../../redux/actions/collectionActions";
+import { getCollections as listCollections } from "../../redux/actions/collectionActions";
+import { Link } from "react-router-dom";
 
 const Collections = () => {
 
   const dispatch = useDispatch()
-  const {handle} = useParams()
-  const productsDetails = useSelector((state) => state.collectionProducts)
-  const {loading, error, product} = productsDetails
+  const getCollections = useSelector((state) => state.collections);
+  const { collections, loadingCollections, errorCollections } = getCollections;
+  
 
   useEffect(() => {
-    if (product && handle !== product.handle){
-      dispatch(getCollectionsProducts)
-    }
-  }, [dispatch, product, handle])
+    dispatch(listCollections());
+  }, [dispatch])
 
-  console.log(product, loading, error)
+  console.log(collections, loadingCollections, errorCollections)
   return (
-    <div>
-      Collections
-    </div>
+    <>
+      {/* Loading Collections Buttons */}
+        <h1 style={{ textAlign: "center", margin: "50px 0" }}>Colleciones</h1>
+        {loadingCollections ? (
+          <h2>Loading...</h2>
+        ) : errorCollections ? (
+          <h2>{errorCollections}</h2>
+        ) : (
+          <div className="collection-buttons">
+            {collections.map((collection) => (
+              <button key={collection.handle} className="collection-btn">
+                <Link
+                  to={`/products/getByCollectionHandle/${collection.handle}`}
+                >
+                  {collection.handle}
+                </Link>
+              </button>
+            ))}
+          </div>
+        )}
+      </>
   )
 }
 
